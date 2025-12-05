@@ -1,0 +1,52 @@
+<div class="container">
+
+  <h2 class="titulo">Postulaciones recibidas</h2>
+  <p class="subtitulo">
+    Revisa y gestiona las postulaciones que artistas enviaron a tus anuncios.
+  </p>
+
+  <!-- LOADING -->
+  <div *ngIf="loading" class="estado mensaje-cargando">
+    Cargando postulaciones...
+  </div>
+
+  <!-- ERROR -->
+  <div *ngIf="error" class="estado error">
+    {{ error }}
+  </div>
+
+  <!-- MENSAJE INFO -->
+  <div *ngIf="!loading && !error && mensaje" class="estado info">
+    {{ mensaje }}
+  </div>
+
+  <!-- LISTADO -->
+  <div *ngIf="!loading && !error && postulaciones.length > 0" class="lista">
+
+    <div class="card" *ngFor="let p of postulaciones">
+
+      <div class="fila">
+        <span class="label">Artista:</span>
+        <span>{{ p.artistaId }}</span>
+      </div>
+
+      <div class="fila">
+        <span class="label">Mensaje:</span>
+        <span>{{ p.mensaje }}</span>
+      </div>
+
+      <div class="fila">
+        <span class="label">Fecha:</span>
+        <span>{{ p.fechaPostulacion }}</span>
+      </div>
+
+      <div class="fila">
+        <span class="label">Aceptada:</span>
+        <span [ngClass]="p.aceptada ? 'ok' : 'pendiente'">
+          {{ p.aceptada ? 'Sí' : 'Pendiente' }}
+        </span>
+      </div>
+
+    </div>
+  </div>
+</div>

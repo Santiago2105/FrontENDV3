@@ -1,0 +1,43 @@
+<div class="artista-layout">
+  <!-- MENÚ IZQUIERDA -->
+  <div class="sidebar">
+    <h3>Panel del artista</h3>
+
+    <button class="sidebar-link" (click)="irDatos()">
+      Mis datos
+    </button>
+
+    <button
+      class="sidebar-link"
+      (click)="irPortafolio()"
+      [class.disabled]="!perfilCompleto"
+    >
+      Mi portafolio
+      <span class="hint" *ngIf="!perfilCompleto">
+        Completa primero tu perfil
+      </span>
+    </button>
+
+    <button
+      class="sidebar-link"
+      (click)="irPostulaciones()"
+      [class.disabled]="!perfilCompleto"
+    >
+      Postulaciones
+      <span class="hint" *ngIf="!perfilCompleto">
+        Completa primero tu perfil
+      </span>
+    </button>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" (click)="logout()">
+        Cerrar sesión
+      </button>
+    </div>
+  </div>
+
+  <!-- CONTENIDO DERECHA -->
+  <div class="content-area">
+    <router-outlet></router-outlet>
+  </div>
+</div>

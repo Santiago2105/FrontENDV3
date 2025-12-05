@@ -1,0 +1,102 @@
+.module-container {
+  padding: 2rem;
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  color: #f9fafb;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
+
+.info-msg,
+.error-msg {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.info-msg {
+  color: #9ca3af;
+}
+
+.error-msg {
+  color: #fca5a5;
+}
+
+.empty-state {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px dashed rgba(148, 163, 184, 0.4);
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+/* TABLA */
+
+.module-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  font-size: 0.9rem;
+}
+
+.module-table thead {
+  background: rgba(30, 64, 175, 0.25);
+}
+
+.module-table th,
+.module-table td {
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid rgba(31, 41, 55, 0.95);
+}
+
+.module-table th {
+  text-align: left;
+  font-weight: 500;
+  color: #9ca3af;
+}
+
+.module-table tbody tr:hover {
+  background: rgba(30, 64, 175, 0.15);
+}
+
+.col-comentario {
+  max-width: 360px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* BADGE PUNTUACIÓN */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.badge-score {
+  background: rgba(139, 92, 246, 0.15);
+  color: #c4b5fd;
+}

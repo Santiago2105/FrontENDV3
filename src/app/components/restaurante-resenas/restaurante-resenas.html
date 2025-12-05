@@ -1,0 +1,49 @@
+<div class="module-container">
+
+  <div class="header-row">
+    <div>
+      <h2>Reseñas del restaurante</h2>
+      <p class="subtitle">
+        Opiniones que has recibido en los eventos realizados en tu local.
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="info-msg">Cargando reseñas...</div>
+  <div *ngIf="error" class="error-msg">{{ error }}</div>
+
+  <div *ngIf="!loading && !error">
+
+    <div *ngIf="mensaje && resenias.length === 0" class="empty-state">
+      <p>{{ mensaje }}</p>
+    </div>
+
+    <table *ngIf="resenias.length > 0" class="module-table">
+      <thead>
+      <tr>
+        <th>Puntuación</th>
+        <th>Comentario</th>
+        <th>Fecha</th>
+        <th>ID Evento</th>
+        <th>ID Artista</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let r of resenias">
+        <td>
+            <span class="badge badge-score">
+              {{ r.puntuacion }}
+            </span>
+        </td>
+        <td class="col-comentario">
+          {{ r.comentario }}
+        </td>
+        <td>{{ r.fechaResenia | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ r.eventoId }}</td>
+        <td>{{ r.artistaId }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="datos-wrapper">
+  <div class="datos-container" *ngIf="artista; else sinPerfil">
+    <h2>Mis datos</h2>
+    <p class="subtitle">
+      Esta es la información que verán los restaurantes sobre ti.
+    </p>
+
+    <div class="field">
+      <span class="label">Nombre artístico:</span>
+      <span class="value">{{ artista?.nombreArtistico }}</span>
+    </div>
+
+    <div class="field">
+      <span class="label">Género principal:</span>
+      <span class="value">{{ artista?.generoPrincipal }}</span>
+    </div>
+
+    <div class="field">
+      <span class="label">Ciudad:</span>
+      <span class="value">{{ artista?.ciudad }}</span>
+    </div>
+
+    <div class="field">
+      <span class="label">Biografía:</span>
+      <span class="value bio">{{ artista?.bio }}</span>
+    </div>
+
+    <button class="btn-primary" (click)="editarPerfil()">
+      Editar perfil
+    </button>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+  </div>
+
+  <ng-template #sinPerfil>
+    <div class="datos-container">
+      <h2>Mis datos</h2>
+      <p class="subtitle">
+        Aún no has creado tu perfil de artista.
+      </p>
+      <button class="btn-primary" (click)="editarPerfil()">
+        Crear perfil de artista
+      </button>
+      <p class="error" *ngIf="error">{{ error }}</p>
+    </div>
+  </ng-template>
+</div>

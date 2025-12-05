@@ -1,0 +1,152 @@
+<div class="form-wrapper" *ngIf="!loading; else cargando">
+  <div class="card">
+    <h2>{{ tituloForm }}</h2>
+    <p class="subtitle">
+      Publica un anuncio para buscar artistas y gestionar tus eventos.
+    </p>
+
+    <form #frm="ngForm" (ngSubmit)="onSubmit(frm)" novalidate>
+      <!-- TÍTULO -->
+      <div class="form-group">
+        <label for="titulo">Título del anuncio</label>
+        <input
+          id="titulo"
+          type="text"
+          name="titulo"
+          [(ngModel)]="anuncio.titulo"
+          required
+          placeholder="Ej. Buscamos banda de rock para viernes por la noche"
+        />
+      </div>
+
+      <!-- DESCRIPCIÓN -->
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea
+          id="descripcion"
+          name="descripcion"
+          [(ngModel)]="anuncio.descripcion"
+          required
+          rows="3"
+          placeholder="Describe el tipo de show, duración, condiciones, etc."
+        ></textarea>
+      </div>
+
+      <!-- GÉNERO / UBICACIÓN / PRESUPUESTO -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="generoBuscado">Género buscado</label>
+          <input
+            id="generoBuscado"
+            type="text"
+            name="generoBuscado"
+            [(ngModel)]="anuncio.generoBuscado"
+            required
+            placeholder="Rock, salsa, acústico, DJ, etc."
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="ubicacion">Ubicación</label>
+          <input
+            id="ubicacion"
+            type="text"
+            name="ubicacion"
+            [(ngModel)]="anuncio.ubicacion"
+            required
+            placeholder="Ej. Miraflores, Lima"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="presupuesto">Presupuesto</label>
+          <input
+            id="presupuesto"
+            type="text"
+            name="presupuesto"
+            [(ngModel)]="anuncio.presupuesto"
+            required
+            placeholder="Ej. S/ 800 - S/ 1200"
+          />
+        </div>
+      </div>
+
+      <!-- FECHA EVENTO + EVENTO ASOCIADO -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fechaEvento">Fecha del evento</label>
+          <input
+            id="fechaEvento"
+            type="date"
+            name="fechaEvento"
+            [(ngModel)]="anuncio.fechaEvento"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="eventoId">Evento asociado</label>
+          <select
+            id="eventoId"
+            name="eventoId"
+            [(ngModel)]="anuncio.eventoId"
+            required
+          >
+            <option [ngValue]="0" disabled>Selecciona un evento</option>
+            <option
+              *ngFor="let ev of eventos"
+              [ngValue]="ev.id"
+            >
+              {{ ev.fechaEvento }} - {{ ev.cachet }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ACTIVO -->
+      <div class="form-group checkbox-row">
+        <label for="activo">
+          <input
+            id="activo"
+            type="checkbox"
+            name="activo"
+            [(ngModel)]="anuncio.activo"
+          />
+          Anuncio activo (visible para artistas)
+        </label>
+      </div>
+
+      <!-- BOTONES -->
+      <div class="form-footer">
+        <button
+          type="button"
+          class="btn-secondary"
+          (click)="cancelar()"
+          [disabled]="saving"
+        >
+          Cancelar
+        </button>
+
+        <button
+          type="submit"
+          class="btn-primary"
+          [disabled]="saving"
+        >
+          {{ saving ? 'Guardando...' : (modoEdicion ? 'Guardar cambios' : 'Crear anuncio') }}
+        </button>
+      </div>
+
+      <!-- MENSAJES -->
+      <p class="error" *ngIf="error">{{ error }}</p>
+      <p class="success" *ngIf="mensaje && !error">{{ mensaje }}</p>
+    </form>
+  </div>
+</div>
+
+<ng-template #cargando>
+  <div class="form-wrapper">
+    <div class="card">
+      <p class="info">Cargando datos del anuncio...</p>
+    </div>
+  </div>
+</ng-template>

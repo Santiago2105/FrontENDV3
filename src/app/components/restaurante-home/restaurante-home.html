@@ -1,0 +1,74 @@
+<div class="layout">
+  <!-- Sidebar / menú -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-circle">R</div>
+      <div class="sidebar-title">
+        <span class="brand">Drinks N’ Tunes</span>
+        <span class="role">Panel restaurante</span>
+      </div>
+    </div>
+
+    <nav class="menu">
+      <a
+        routerLink="/restaurante/datos"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Mis datos
+      </a>
+
+      <a
+        routerLink="/restaurante/perfil"
+        routerLinkActive="active"
+      >
+        Perfil de restaurante
+      </a>
+
+      <div class="menu-section">Eventos y anuncios</div>
+
+      <a
+        routerLink="/restaurante/eventos"
+        routerLinkActive="active"
+      >
+        Eventos
+      </a>
+      <a
+        routerLink="/restaurante/anuncios"
+        routerLinkActive="active"
+      >
+        Anuncios
+      </a>
+
+      <div class="menu-section">Relación con artistas</div>
+
+      <a
+        routerLink="/restaurante/postulaciones"
+        routerLinkActive="active"
+      >
+        Postulaciones
+      </a>
+      <a
+        routerLink="/restaurante/mensajes"
+        routerLinkActive="active"
+      >
+        Mensajes
+      </a>
+      <a
+        routerLink="/restaurante/resenas"
+        routerLinkActive="active"
+      >
+        Reseñas
+      </a>
+    </nav>
+
+    <button class="logout-btn" (click)="logout()">
+      Cerrar sesión
+    </button>
+  </aside>
+
+  <!-- Contenido dinámico -->
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

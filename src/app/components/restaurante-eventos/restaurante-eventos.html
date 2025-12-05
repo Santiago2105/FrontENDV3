@@ -1,0 +1,70 @@
+<div class="module-container">
+
+  <div class="header-row">
+    <div>
+      <h2>Mis eventos</h2>
+      <p class="subtitle">
+        Administra los eventos programados en tu restaurante.
+      </p>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn-secondary" type="button" (click)="recargar()">
+        Recargar
+      </button>
+
+      <button class="btn-primary" type="button" (click)="crearEvento()">
+        + Nuevo evento
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="info-msg">Cargando eventos...</div>
+  <div *ngIf="error" class="error-msg">{{ error }}</div>
+
+  <div *ngIf="!loading && !error">
+
+    <div *ngIf="mensaje && eventos.length === 0" class="empty-state">
+      <p>{{ mensaje }}</p>
+      <button class="btn-primary" type="button" (click)="crearEvento()">
+        Crear primer evento
+      </button>
+    </div>
+
+    <table *ngIf="eventos.length > 0" class="module-table">
+      <thead>
+      <tr>
+        <th>Fecha del evento</th>
+        <th>Cachet</th>
+        <th>Realizado</th>
+        <th>Fecha de creación</th>
+        <th class="col-acciones">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ev of eventos">
+        <td>{{ ev.fechaEvento | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ ev.cachet }}</td>
+        <td>
+            <span
+              class="badge"
+              [ngClass]="ev.realizado ? 'badge-success' : 'badge-pending'"
+            >
+              {{ ev.realizado ? 'Realizado' : 'Pendiente' }}
+            </span>
+        </td>
+        <td>{{ ev.fechaCreacion | date: 'yyyy-MM-dd' }}</td>
+        <td class="col-acciones">
+          <button class="btn-link" (click)="editarEvento(ev.id)">
+            Editar
+          </button>
+          <button class="btn-link btn-danger" (click)="eliminarEvento(ev.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
