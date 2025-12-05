@@ -34,14 +34,11 @@ export class ArtistaService {
   }
 
   // ✅ Adaptado al backend actual: usamos GET /artistas y filtramos por usuarioId
-  getByUsuarioId(usuarioId: number): Observable<Artista | null> {
-    return this.http.get<Artista[]>(`${this.apiUrl}/artistas`).pipe(
-      map((lista: Artista[]) => {
-        const encontrado = lista.find((a) => a.usuarioId === usuarioId);
-        return encontrado ?? null;
-      })
-    );
-  }
+getByUsuarioId(usuarioId: number): Observable<Artista> {
+  // Usamos la ruta optimizada que creamos en el Backend
+  // Nota: El backend puede devolver 404 o null si no existe, hay que manejarlo en el componente
+  return this.http.get<Artista>(`${this.apiUrl}/public/artistas/usuario/${usuarioId}`);
+}
 
   listArtistas(): Observable<Artista[]> {
     return this.http.get<Artista[]>(`${this.apiUrl}/artistas`);
