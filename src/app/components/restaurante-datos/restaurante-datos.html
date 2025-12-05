@@ -1,0 +1,45 @@
+<div class="datos-wrapper">
+  <div class="datos-container" *ngIf="restaurante; else sinPerfil">
+    <h2>Mis datos</h2>
+    <p class="subtitle">Esta es la información actual de tu restaurante.</p>
+
+    <div class="field">
+      <span class="label">Nombre del restaurante:</span>
+      <span class="value">{{ restaurante?.nombre }}</span>
+    </div>
+
+    <div class="field">
+      <span class="label">Ciudad:</span>
+      <span class="value">{{ restaurante?.ciudad }}</span>
+    </div>
+
+    <div class="field">
+      <span class="label">Dirección:</span>
+      <span class="value">{{ restaurante?.direccion }}</span>
+    </div>
+
+    <div class="field">
+      <span class="label">Aforo (mesas):</span>
+      <span class="value">{{ restaurante?.aforoMesas }}</span>
+    </div>
+
+    <a class="btn-primary" routerLink="/restaurante/perfil">
+      Editar perfil de restaurante
+    </a>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+  </div>
+
+  <ng-template #sinPerfil>
+    <div class="datos-container">
+      <h2>Mis datos</h2>
+      <p class="subtitle">Aún no has registrado el perfil de tu restaurante.</p>
+
+      <a class="btn-primary" routerLink="/restaurante/perfil">
+        Crear perfil de restaurante
+      </a>
+
+      <p class="error" *ngIf="error">{{ error }}</p>
+    </div>
+  </ng-template>
+</div>

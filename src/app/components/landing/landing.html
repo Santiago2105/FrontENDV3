@@ -1,0 +1,79 @@
+<div class="landing-wrapper">
+  <!-- Barra superior -->
+  <header class="navbar">
+    <div class="logo">
+      <span class="logo-icon">🎵</span>
+      <span class="logo-text">Drinks N' Tunes</span>
+    </div>
+    <nav class="nav-links">
+      <a routerLink="/login">Iniciar sesión</a>
+      <a routerLink="/register" class="btn-outline">Registrarme</a>
+    </nav>
+  </header>
+
+  <!-- Sección principal -->
+  <main class="hero">
+    <div class="hero-text">
+      <h1>Conecta música en vivo con los mejores restaurantes.</h1>
+      <p>
+        Drinks N' Tunes es la plataforma donde
+        <strong>restaurantes</strong> encuentran
+        <strong>artistas</strong> para crear experiencias únicas en cada noche.
+      </p>
+
+      <div class="hero-actions">
+        <a routerLink="/register" class="btn-primary">
+          Soy restaurante
+        </a>
+        <a routerLink="/register" class="btn-secondary">
+          Soy artista
+        </a>
+      </div>
+
+      <p class="small-text">
+        ¿Ya tienes cuenta?
+        <a routerLink="/login">Inicia sesión aquí</a>.
+      </p>
+    </div>
+
+    <div class="hero-illustration">
+      <div class="card">
+        <h3>¿Cómo funciona?</h3>
+        <ul>
+          <li>🎤 Los artistas publican su portafolio.</li>
+          <li>🍸 Los restaurantes crean anuncios de eventos.</li>
+          <li>🤝 La plataforma conecta ambas partes.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Sección de pasos -->
+  <section class="steps">
+    <h2>Empieza en 3 pasos</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-number">1</span>
+        <h3>Crea tu cuenta</h3>
+        <p>Regístrate como restaurante o artista en pocos minutos.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-number">2</span>
+        <h3>Publica</h3>
+        <p>
+          Restaurante: crea anuncios de fechas disponibles.<br />
+          Artista: muestra tu estilo y tu portafolio.
+        </p>
+      </div>
+      <div class="step-card">
+        <span class="step-number">3</span>
+        <h3>Conecta</h3>
+        <p>Recibe propuestas y cierra eventos que hagan vibrar a tu público.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© {{ currentYear }} Drinks N' Tunes. Todos los derechos reservados.</p>
+  </footer>
+</div>

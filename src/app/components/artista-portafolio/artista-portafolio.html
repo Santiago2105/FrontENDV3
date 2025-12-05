@@ -1,0 +1,84 @@
+<div class="portafolio-wrapper">
+
+  <h2 class="portafolio-title">Mi Portafolio</h2>
+
+  <!-- FORMULARIO -->
+  <div class="form-card">
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input
+        type="text"
+        id="titulo"
+        [(ngModel)]="nuevoTitulo"
+        placeholder="Ej: Presentación en vivo en el Teatro XYZ"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="tipo">Tipo</label>
+      <select id="tipo" [(ngModel)]="nuevoTipo">
+        <option value="" disabled selected>Selecciona un tipo</option>
+        <option value="VIDEO">Video</option>
+        <option value="AUDIO">Audio</option>
+        <option value="FOTO">Fotografía</option>
+        <option value="OTRO">Otro</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="url">URL del contenido</label>
+      <input
+        type="text"
+        id="url"
+        [(ngModel)]="nuevoUrl"
+        placeholder="https://youtube.com/..."
+      />
+    </div>
+
+    <button class="btn-purple" (click)="guardarPortafolio()">
+      {{ editandoId ? 'Actualizar portafolio' : 'Guardar portafolio' }}
+    </button>
+
+    <div class="success-message" *ngIf="mensaje">{{ mensaje }}</div>
+    <div class="error-message" *ngIf="error">{{ error }}</div>
+  </div>
+
+  <!-- LISTA DE PORTAFOLIOS -->
+  <div *ngIf="loading">Cargando portafolio...</div>
+
+  <div class="portafolio-grid" *ngIf="!loading && portafolios.length > 0">
+    <div class="portafolio-card" *ngFor="let item of portafolios">
+
+      <span class="categoria-tag">{{ item.tipo }}</span>
+
+      <h4>{{ item.titulo }}</h4>
+
+      <p>
+        <a
+          [href]="item.url"
+          target="_blank"
+          style="color:#7c3aed; text-decoration:underline;"
+        >
+          Ver contenido
+        </a>
+      </p>
+
+      <p *ngIf="item.fechaCreacion">
+        <small>Publicado: {{ item.fechaCreacion | date: 'dd/MM/yyyy' }}</small>
+      </p>
+
+      <div class="card-buttons">
+        <button class="btn-edit" (click)="editar(item)">
+          Editar
+        </button>
+        <button class="btn-delete" (click)="eliminar(item.id!)">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <p *ngIf="!loading && portafolios.length === 0">
+    Aún no tienes elementos en tu portafolio. ¡Comienza agregando uno!
+  </p>
+</div>

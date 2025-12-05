@@ -1,0 +1,45 @@
+<div class="container">
+
+  <h2 class="titulo">Mensajes recibidos</h2>
+  <p class="subtitulo">
+    Artistas interesados en tus anuncios te han enviado estos mensajes.
+  </p>
+
+  <!-- LOADING -->
+  <div *ngIf="loading" class="estado mensaje-cargando">
+    Cargando mensajes...
+  </div>
+
+  <!-- ERROR -->
+  <div *ngIf="error" class="estado error">
+    {{ error }}
+  </div>
+
+  <!-- MENSAJE INFO -->
+  <div *ngIf="!loading && !error && mensajeInfo" class="estado info">
+    {{ mensajeInfo }}
+  </div>
+
+  <!-- LISTADO -->
+  <div *ngIf="!loading && !error && mensajes.length > 0" class="lista">
+
+    <div class="card" *ngFor="let m of mensajes">
+
+      <div class="fila">
+        <span class="label">Artista:</span>
+        <span>{{ m.usuarioId }}</span>
+      </div>
+
+      <div class="fila">
+        <span class="label">Mensaje:</span>
+        <span>{{ m.texto }}</span>
+      </div>
+
+      <div class="fila">
+        <span class="label">Fecha:</span>
+        <span>{{ m.fechaEnvio }}</span>
+      </div>
+
+    </div>
+  </div>
+</div>

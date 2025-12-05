@@ -1,0 +1,56 @@
+<div class="module-container">
+
+  <div class="header-row">
+    <div>
+      <h2>Mis anuncios</h2>
+      <p class="subtitle">Administra los anuncios creados para tus eventos.</p>
+    </div>
+
+    <button class="btn-primary" (click)="crearAnuncio()">
+      + Nuevo anuncio
+    </button>
+  </div>
+
+  <!-- Mensajes de estado -->
+  <div class="info-msg" *ngIf="loading">Cargando anuncios...</div>
+  <div class="error-msg" *ngIf="error">{{ error }}</div>
+
+  <!-- Contenido principal -->
+  <div *ngIf="!loading && !error">
+
+    <!-- Sin anuncios -->
+    <div *ngIf="anuncios.length === 0" class="empty-state">
+      <p>No tienes anuncios registrados.</p>
+      <button class="btn-secondary" (click)="crearAnuncio()">Crear anuncio</button>
+    </div>
+
+    <!-- Tabla -->
+    <table *ngIf="anuncios.length > 0" class="module-table">
+      <thead>
+      <tr>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Género buscado</th>
+        <th>Fecha evento</th>
+        <th class="col-acciones">Acciones</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let a of anuncios">
+        <td>{{ a.titulo }}</td>
+        <td>{{ a.descripcion }}</td>
+        <td>{{ a.generoBuscado }}</td>
+        <td>{{ a.fechaEvento | date:'yyyy-MM-dd' }}</td>
+
+        <td class="col-acciones">
+          <button class="btn-link" (click)="editarAnuncio(a.id)">Editar</button>
+          <button class="btn-link btn-danger" (click)="eliminarAnuncio(a.id)">Eliminar</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>

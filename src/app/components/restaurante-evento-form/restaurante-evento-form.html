@@ -1,0 +1,80 @@
+<div class="form-wrapper" *ngIf="!loading; else cargando">
+  <div class="card">
+    <h2>{{ tituloForm }}</h2>
+    <p class="subtitle">
+      Define la fecha, cachet y estado del evento que se realizará en tu restaurante.
+    </p>
+
+    <form #frm="ngForm" (ngSubmit)="onSubmit(frm)" novalidate>
+      <!-- FECHA DEL EVENTO -->
+      <div class="form-group">
+        <label for="fechaEvento">Fecha del evento</label>
+        <input
+          id="fechaEvento"
+          type="date"
+          name="fechaEvento"
+          [(ngModel)]="evento.fechaEvento"
+          required
+        />
+      </div>
+
+      <!-- CACHET -->
+      <div class="form-group">
+        <label for="cachet">Cachet (monto acordado o referencia)</label>
+        <input
+          id="cachet"
+          type="text"
+          name="cachet"
+          [(ngModel)]="evento.cachet"
+          required
+          placeholder="Ej. S/ 800 por show, a tratar, etc."
+        />
+      </div>
+
+      <!-- REALIZADO -->
+      <div class="form-group checkbox-row">
+        <label for="realizado">
+          <input
+            id="realizado"
+            type="checkbox"
+            name="realizado"
+            [(ngModel)]="evento.realizado"
+          />
+          Evento ya realizado
+        </label>
+      </div>
+
+      <!-- BOTONES -->
+      <div class="form-footer">
+        <button
+          type="button"
+          class="btn-secondary"
+          (click)="cancelar()"
+          [disabled]="saving"
+        >
+          Cancelar
+        </button>
+
+        <button
+          type="submit"
+          class="btn-primary"
+          [disabled]="saving"
+        >
+          {{ saving ? 'Guardando...' : (modoEdicion ? 'Guardar cambios' : 'Crear evento') }}
+        </button>
+      </div>
+
+      <!-- MENSAJES -->
+      <p class="error" *ngIf="error">{{ error }}</p>
+      <p class="success" *ngIf="mensaje && !error">{{ mensaje }}</p>
+    </form>
+  </div>
+</div>
+
+<ng-template #cargando>
+  <div class="form-wrapper">
+    <div class="card">
+      <p class="info">Cargando información del evento...</p>
+    </div>
+  </div>
+</ng-template>

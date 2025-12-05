@@ -1,0 +1,114 @@
+/* ===========================
+   CONTENEDOR GENERAL
+=========================== */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===========================
+   TITULOS Y SUBTITULOS
+=========================== */
+.titulo {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.subtitulo {
+  font-size: 15px;
+  color: #b8b8b8;
+  margin-bottom: 25px;
+}
+
+/* ===========================
+   ESTADOS (loading, error, info)
+=========================== */
+.estado {
+  padding: 12px 18px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.mensaje-cargando {
+  background: rgba(110, 80, 255, 0.15);
+  border: 1px solid rgba(141, 115, 255, 0.4);
+}
+
+.error {
+  background: rgba(255, 80, 80, 0.15);
+  border: 1px solid rgba(255, 100, 100, 0.4);
+  color: #ff8a8a;
+}
+
+.info {
+  background: rgba(80, 180, 255, 0.15);
+  border: 1px solid rgba(80, 180, 255, 0.4);
+  color: #a7d8ff;
+}
+
+/* ===========================
+   LISTA DE POSTULACIONES
+=========================== */
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Tarjeta de postulación */
+.card {
+  background: #0f1324;
+  padding: 18px 22px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(140, 80, 255, 0.5);
+}
+
+/* ===========================
+   CAMPOS DENTRO DE LA CARD
+=========================== */
+.fila {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.label {
+  font-weight: 600;
+  color: #bbbbbb;
+}
+
+/* ===========================
+   ESTADOS DE LA POSTULACION
+=========================== */
+.ok {
+  color: #5bde8b;
+  font-weight: 600;
+}
+
+.pendiente {
+  color: #ffd165;
+  font-weight: 600;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 600px) {
+  .fila {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
